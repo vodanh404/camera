@@ -1,0 +1,47 @@
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  # Đối với sử dụng camera trực tiếp
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Khai báo thư viện.
+# Nếu không chưa cài thư viện thì bạn hãy cài thư viện bằng lệnh: pip install opencv-python
+import cv2
+------Chương trình chính------------
+
+cap = cv2.VideoCapture(0)  # Khởi tạo đối tượng VideoCapture để đọc từ camera mặc định (có thể thay số không thành số 1,2,3 nếu bạn có nhiều camera cùng kết nối).
+
+
+while True:  # Tạo 1 vòng lặp vô hạn
+
+    ret, frame = cap.read()      # Đọc một khung hình từ camera
+    cv2.imshow('Camera', frame)      # Hiển thị khung hình
+    
+    if cv2.waitKey(1) & 0xFF == ord('q'):      # Thoát nếu nhấn phím 'q'
+        break
+
+# Giải phóng camera và đóng tất cả các cửa sổ
+cap.release()
+cv2.destroyAllWindows()
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  # Đối với sử dụng camera IP
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# Khai báo thư viện.
+# Nếu không chưa cài thư viện thì bạn hãy cài thư viện bằng lệnh: pip install requests opencv-python numpy
+import cv2
+import sys # là 1 thư viện cung cấp quyền truy cập vào các tham số và chức năng cụ thể của hệ thống mà Python đang chạy trên đó.
+-------Chương trình chính------------
+url = "http://192.168.0.101:8080/video"   # Luồn camera (hãy thay luồng camera của bạn vào đây)
+cap = cv2.VideoCapture(url, cv2.CAP_FFMPEG)    # Tạo đối tượng VideoCapture và sử dụng cv2.CAP_FFMPEG để tăng cường khả năng tương thích với các giao thức luồng.
+while True:
+    ret, frame = cap.read()      # Đọc một khung hình từ camera ip
+    cv2.imshow('Camera ip', frame)      # Hiển thị khung hình
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):      # Thoát nếu nhấn phím 'q'
+        break
+
+# Giải phóng camera và đóng tất cả các cửa sổ
+cap.release()
+cv2.destroyAllWindows()
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Khá đơn giản nhỉ và có 1 số lưu ý như sau:
+- khi sử dụng camera vật lí thì kiểm tra xem bạn đã khai báo đúng chưa và bật camera chưa nhé.
+- sử dụng camera ip sẽ có độ trễ (do nó được truyền qua internet)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
