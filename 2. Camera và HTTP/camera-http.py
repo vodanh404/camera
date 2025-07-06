@@ -24,3 +24,6 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
 
 # Cách xem: truy cập vào  http://[Địa chỉ IP của máy phát]:5000/video_feed
+#-------------------------Đánh giá---------------------------------------------------
+# Đối với máy tính: Ổn gần như không có độ trễ
+# Đối với raspberry pi 4: ko chạy đc:P 
