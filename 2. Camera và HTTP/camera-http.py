@@ -5,8 +5,7 @@ import cv2
 import time
 
 app = Flask(__name__)
-camera = cv2.VideoCapture(0) # 0 là ID của webcam mặc định. Thay đổi nếu có nhiều camera.
-
+camera = cv2.VideoCapture(0) 
 def generate_frames():
     while True:
         success, frame = camera.read()
